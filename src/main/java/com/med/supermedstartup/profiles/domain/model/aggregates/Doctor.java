@@ -38,6 +38,15 @@ public class Doctor extends AuditableAbstractAggregateRoot<Doctor> {
         this.userId = command.userId();
     }
 
+    public Doctor(String uid, String firstName, String lastName, String email, String phone, String licenceNumber, String specialty) {
+        this();
+        this.name = new PersonName(firstName, lastName);
+        this.email = new EmailAddress(email);
+        this.phone = phone;
+        this.licenseNumber = licenceNumber;
+        this.specialty = specialty;
+    }
+
     public String getFullName() {
         return name.getFullName();
     }
