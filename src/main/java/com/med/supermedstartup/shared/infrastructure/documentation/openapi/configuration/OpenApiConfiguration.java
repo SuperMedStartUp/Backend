@@ -24,7 +24,7 @@ public class OpenApiConfiguration {
                                 .url("https://www.apache.org/licenses/LICENSE-2.0.html")))
                 .externalDocs(new ExternalDocumentation()
                         .description("Med Wiki Documentation")
-                        .url("https://losluminosos-sw57.github.io/LandingPageMedSystem/"));
+                        .url("https://landingpage-med.netlify.app"));
 
 
         final String securitySchemeName = "bearerAuth";
