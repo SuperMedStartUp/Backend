@@ -47,9 +47,9 @@ class PatientControllerIntegrationTest {
     @Test
     void testGetPatientById() throws Exception {
         Long patientId = 1L;
-        StreetAddress adress = new StreetAddress("Villagran", "12", "Lima", "1234", "Peru");
+        StreetAddress address = new StreetAddress("Villagran", "12", "Lima", "1234", "Peru");
 
-        Patient mockPatient = new Patient("1", "John", "Doe", "john.doe@example.com", "123456789", adress);
+        Patient mockPatient = new Patient("1", "John", "Doe", "john.doe@example.com", "123456789", address);
 
         ArgumentMatcher<GetPatientByIdQuery> matcher = query -> query.id().equals(patientId);
 
@@ -61,10 +61,9 @@ class PatientControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.fullName").value("John Doe"))
                 .andExpect(jsonPath("$.email").value("john.doe@example.com"))
-                .andExpect(jsonPath("$.phone").value("123456789"));
+                .andExpect(jsonPath("$.phone").value("123456789"))
+                .andExpect(jsonPath("$.streetAddress").value("Villagran 12, Lima, 1234, Peru"));
 
         verify(patientQueryService).handle(argThat((GetPatientByIdQuery q) -> q.id().equals(patientId)));
-
     }
-
 }
