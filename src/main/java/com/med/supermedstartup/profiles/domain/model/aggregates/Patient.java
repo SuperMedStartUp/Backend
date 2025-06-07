@@ -47,6 +47,15 @@ public class Patient extends AuditableAbstractAggregateRoot<Patient> {
         this.userId = command.userId();
     }
 
+    // Constructor adicional para los tests
+    public Patient(String uid, String firstName, String lastName, String email, String phone, StreetAddress address) {
+        this();
+        this.name = new PersonName(firstName, lastName);
+        this.email = new EmailAddress(email);
+        this.phone = phone;
+        this.address = address;
+    }
+
     public String getStreetAddress() {
         return address.getStreetAddress();
     }
