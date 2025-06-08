@@ -9,11 +9,9 @@ public class TreatmentTransform {
 
     @Test
     void toCommandFromResource_Test() {
-        // Arrange
-        String treatmentName = "Physical Therapy";
-        String description = "Therapy sessions for recovery";
-        Long patientId = 123L;
-        Long doctorId = 456L;
+        String treatmentName = "Terapia de recuperación";
+        String description = "Sesión de terapia para la recuperación de lesiones";
+        Long patientId = 12L;
         String startDate = "2023-01-01";
         String endDate = "2023-12-31";
 

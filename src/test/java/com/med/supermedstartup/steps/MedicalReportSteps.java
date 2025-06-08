@@ -16,21 +16,14 @@ import java.util.Map;
 
 public class MedicalReportSteps {
 
-    @LocalServerPort
-    private int port;
-
     @Autowired
     private TestRestTemplate restTemplate;
 
     private Response response;
 
-
-
     @Given("the system is available")
     public void the_system_is_available() {
-        baseURI = "http://localhost:" + port;
-
-
+        baseURI = "http://localhost:8080";
 
     }
 
@@ -43,9 +36,9 @@ public class MedicalReportSteps {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         response = given()
-                .baseUri("http://localhost:" + port)
+                .baseUri("http://localhost:8080")
                 .contentType("application/json")
-                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJSb2xhbmRvIiwiaWF0IjoxNzQ4OTIyNzk2LCJleHAiOjE3NDk1Mjc1OTZ9.pfSRclBNl7vyI0-fuz2vKr0qQoU39gl5nHCa4kVTb53vrM6Dmcm88Jo_8ZesYNWi")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJNYXJpbyIsImlhdCI6MTc0OTM1MjU2OCwiZXhwIjoxNzQ5OTU3MzY4fQ.qNjHzWSa5CTRwXDszRc6J7hWQhWMdk2bRBsBBH070gUxrD61oEUl9_gxD3mSJ3s5")
                 .body("{"
                         + "\"reason\": \"" + data.get("reason") + "\","
                         + "\"date\": \"" + data.get("date") + "\","
@@ -58,7 +51,14 @@ public class MedicalReportSteps {
 
     @Then("the system should respond with a {int} code")
     public void the_system_should_respond_with_a_code(int statusCode) {
-        response.then().statusCode(statusCode);
+        try {
+            response.then().statusCode(statusCode);
+        } catch (AssertionError e) {
+            if (response.statusCode() == 401) {
+                System.err.println("Error 401: No autorizado. Verifica el token o los permisos.");
+            }
+            throw e;
+        }
     }
 
     @And("the report should contain the data:")

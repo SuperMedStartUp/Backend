@@ -12,14 +12,15 @@ class PatientTransformTest {
     @Test
     void testTransformToResourceFromEntity() {
 
-        StreetAddress adress = new StreetAddress("Villagran", "12", "Lima", "1234", "Peru");
-        Patient patient = new Patient("1", "John", "Doe", "john.doe@example.com", "123456789", adress );
+        StreetAddress address = new StreetAddress("Avenida Benavides", "23", "Lima", "15002", "Peru");
+
+        Patient patient = new Patient("1", "Jane", "Doe", "jane.doe@example.com", "923456789", address);
 
         PatientResource resource = PatientResourceFromEntityAssembler.toResourceFromEntity(patient);
 
-        assertEquals("John Doe", resource.fullName());
-        assertEquals("john.doe@example.com", resource.email());
-        assertEquals("123456789", resource.phone());
-        assertEquals("Villagran 12, Lima, 1234, Peru", resource.streetAddress());
+        assertEquals("Jane Doe", resource.fullName());
+        assertEquals("jane.doe@example.com", resource.email());
+        assertEquals("923456789", resource.phone());
+        assertEquals("Avenida Benavides 23, Lima, 15002, Peru", resource.streetAddress());
     }
 }

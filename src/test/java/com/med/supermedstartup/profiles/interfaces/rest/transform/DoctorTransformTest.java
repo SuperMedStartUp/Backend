@@ -10,13 +10,13 @@ class DoctorTransformTest {
 
     @Test
     void testTransformToResourceFromEntity() {
-        Doctor doctor = new Doctor("1", "John", "Doe", "john.doe@example.com", "123456789", "ABC123", "CARDIOLOGY");
+        Doctor doctor = new Doctor("1", "John", "Doe", "john.doe@example.com", "923456789", "ABC123", "Cardiologia");
         DoctorResource resource = DoctorResourceFromEntityAssembler.toResourceFromEntity(doctor);
 
         assertEquals("John Doe", resource.fullName());
         assertEquals("john.doe@example.com", resource.email());
-        assertEquals("123456789", resource.phone());
+        assertEquals("923456789", resource.phone());
         assertEquals("ABC123", resource.licenseNumber());
-        assertEquals("CARDIOLOGY", resource.specialty());
+        assertEquals("Cardiologia", resource.specialty());
     }
 }

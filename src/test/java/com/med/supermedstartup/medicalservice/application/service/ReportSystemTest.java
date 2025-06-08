@@ -26,11 +26,11 @@ public class ReportSystemTest {
     void crearResultCommand_retornaExitosamente() {
 
         String baseUrl = "http://localhost:" + port + "/api/v1/results";
-        CreateResultCommand command = new CreateResultCommand(10L, 2L, "Radiografía", "2023-10-01", true);
+        CreateResultCommand command = new CreateResultCommand(1L, 2L, "Resonancia", "2023-10-02", true);
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
-        headers.set("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJSb2xhbmRvIiwiaWF0IjoxNzQ4OTIyNzk2LCJleHAiOjE3NDk1Mjc1OTZ9.pfSRclBNl7vyI0-fuz2vKr0qQoU39gl5nHCa4kVTb53vrM6Dmcm88Jo_8ZesYNWi");
+        headers.set("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJDYXJvbCIsImlhdCI6MTc0OTM0MzczMywiZXhwIjoxNzQ5OTQ4NTMzfQ.RWbXrc0eVmCgPanPAVoDos2SPaWxvWzs47p9levXBjh9kM1t_yAVMC2cm-L0HV5Q");
         HttpEntity<CreateResultCommand> request = new HttpEntity<>(command, headers);
 
         ResponseEntity<Result> response = restTemplate.exchange(baseUrl, HttpMethod.POST, request, Result.class);

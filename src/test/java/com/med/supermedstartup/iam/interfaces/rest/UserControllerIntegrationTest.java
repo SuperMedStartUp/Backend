@@ -30,14 +30,14 @@ public class UserControllerIntegrationTest {
 
     @Test
     void crearDoctorCorrectamenteAtravésDelEndPoint() throws Exception {
-        SignUpResource resource = new SignUpResource("doctor12", "password123", "DOCTOR");
+        SignUpResource resource = new SignUpResource("doctor1", "password123", "DOCTOR");
 
         mockMvc.perform(post("/api/v1/authentication/sign-up")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(resource)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.username").value("doctor12"))
+                .andExpect(jsonPath("$.username").value("doctor1"))
                 .andExpect(jsonPath("$.role").value("DOCTOR"));
     }
 

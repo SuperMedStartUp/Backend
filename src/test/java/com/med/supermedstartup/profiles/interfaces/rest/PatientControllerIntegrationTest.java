@@ -47,9 +47,9 @@ class PatientControllerIntegrationTest {
     @Test
     void testGetPatientById() throws Exception {
         Long patientId = 1L;
-        StreetAddress address = new StreetAddress("Villagran", "12", "Lima", "1234", "Peru");
+        StreetAddress address = new StreetAddress("Avenida Benavides", "23", "Lima", "15002", "Peru");
 
-        Patient mockPatient = new Patient("1", "John", "Doe", "john.doe@example.com", "123456789", address);
+        Patient mockPatient = new Patient("1", "Jane", "Doe", "jane.doe@example.com", "923456789", address);
 
         ArgumentMatcher<GetPatientByIdQuery> matcher = query -> query.id().equals(patientId);
 
@@ -59,10 +59,10 @@ class PatientControllerIntegrationTest {
         mockMvc.perform(get("/api/v1/patients/{id}", patientId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.fullName").value("John Doe"))
-                .andExpect(jsonPath("$.email").value("john.doe@example.com"))
-                .andExpect(jsonPath("$.phone").value("123456789"))
-                .andExpect(jsonPath("$.streetAddress").value("Villagran 12, Lima, 1234, Peru"));
+                .andExpect(jsonPath("$.fullName").value("Jane Doe"))
+                .andExpect(jsonPath("$.email").value("jane.doe@example.com"))
+                .andExpect(jsonPath("$.phone").value("923456789"))
+                .andExpect(jsonPath("$.streetAddress").value("Avenida Benavides 23, Lima, 15002, Peru"));
 
         verify(patientQueryService).handle(argThat((GetPatientByIdQuery q) -> q.id().equals(patientId)));
     }

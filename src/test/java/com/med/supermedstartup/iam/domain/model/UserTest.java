@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserTest {
 
     @Test
-    void crearUser() {
+    void crearUsuario() {
         Role role = new Role(Roles.DOCTOR);
         User user = new User("doctor1", "password123", role);
         assertEquals("doctor1", user.getUsername());

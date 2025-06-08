@@ -2,6 +2,7 @@ package com.med.supermedstartup.profiles.application.service;
 
 import com.med.supermedstartup.profiles.domain.model.aggregates.Patient;
 import com.med.supermedstartup.profiles.domain.model.queries.GetPatientByIdQuery;
+import com.med.supermedstartup.profiles.domain.model.valueobjects.StreetAddress;
 import com.med.supermedstartup.profiles.domain.services.PatientQueryService;
 import com.med.supermedstartup.profiles.infrastructure.persistence.jpa.repositories.PatientRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,8 +31,11 @@ class PatientServiceTest {
 
     @Test
     void testGetPatientById() {
+
+        StreetAddress address = new StreetAddress("Avenida Benavides", "23", "Lima", "15002", "Peru");
+
         Long patientId = 1L;
-        Patient mockPatient = new Patient("1", "John", "Doe", "john.doe@example.com", "123456789", null);
+        Patient mockPatient = new Patient("1", "Jane", "Doe", "jane.doe@example.com", "923456789", address);
         GetPatientByIdQuery query = new GetPatientByIdQuery(patientId);
 
         when(patientRepository.findById(patientId)).thenReturn(Optional.of(mockPatient));
@@ -40,7 +44,10 @@ class PatientServiceTest {
         Optional<Patient> result = patientService.handle(query);
 
         assertTrue(result.isPresent());
-        assertEquals("John Doe", result.get().getFullName());
+        assertEquals("Jane Doe", result.get().getFullName());
+        assertEquals("jane.doe@example.com", result.get().getEmailAddress());
+        assertEquals("923456789", result.get().getPhone());
+        assertEquals(address, result.get().getAddress());
         verify(patientService, times(1)).handle(query);
     }
 }

@@ -31,7 +31,8 @@ class DoctorServiceTest {
     @Test
     void testGetDoctorById() {
         Long doctorId = 1L;
-        Doctor mockDoctor = new Doctor("1", "John", "Doe", "john.doe@example.com", "123456789", "ABC123", "Cardiology");
+
+        Doctor mockDoctor = new Doctor("1", "John", "Doe", "john.doe@example.com", "923456789", "ABC123", "Cardiologia");
         GetDoctorByIdQuery query = new GetDoctorByIdQuery(doctorId);
 
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(mockDoctor));

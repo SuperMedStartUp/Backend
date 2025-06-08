@@ -56,7 +56,7 @@ class UserCommandServiceTest {
         when(userRepository.existsByUsername(command.username())).thenReturn(false);
         when(userRepository.findByUsername(command.username())).thenReturn(Optional.of(user));
         when(userRepository.save(any(User.class))).thenReturn(user);
-        // Act
+
         Optional<ImmutablePair<User, String>> result = userCommandService.handle(command);
 
     }
