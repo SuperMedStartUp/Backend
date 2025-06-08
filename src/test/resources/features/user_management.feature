@@ -19,13 +19,13 @@ Característica: Gestión de Usuarios
     Y el usuario debe tener el rol "PATIENT"
 
   Escenario: Intentar crear un usuario con username existente
-    Dado que existe un usuario con username "doctor1"
-    Cuando intento crear un usuario con username "doctor1" y password "pass123" y rol "DOCTOR"
+    Dado que existe un usuario con username "doctor2"
+    Cuando intento crear un usuario con username "doctor2" y password "pass123" y rol "DOCTOR"
     Entonces debe mostrarse un error indicando que el username ya existe
 
   Escenario: Obtener usuario por username
-    Dado que existe un usuario con username "doctor1"
-    Cuando busco el usuario con username "doctor1"
+    Dado que existe un usuario con username "doctor3"
+    Cuando busco el usuario con username "doctor3"
     Entonces debo obtener los datos del usuario
     Y el usuario debe tener el rol "DOCTOR"
 

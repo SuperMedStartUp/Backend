@@ -15,6 +15,7 @@ import io.cucumber.java.an.Y;
 import io.cucumber.java.ast.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import io.cucumber.java.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -58,11 +59,9 @@ public class UserManagementSteps {
     private User createdUser;
     private List<User> users;
 
+
     @Before
     public void setup() {
-        userRepository.deleteAll();
-        roleRepository.deleteAll();
-        // Crear roles por defecto
         Arrays.stream(Roles.values()).forEach(role -> {
             if (!roleRepository.existsByName(role)) {
                 roleRepository.save(new Role(role));

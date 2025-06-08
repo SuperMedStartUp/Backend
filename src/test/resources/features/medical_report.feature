@@ -12,4 +12,4 @@ Feature: Create medical report
 
     Examples:
       |  reason           | date       | patientId   |
-      | Consulta medica   | 2023-14-01 | 10          |
+      | Consulta medica   | 2023-14-01 | 11          |

@@ -38,7 +38,7 @@ public class MedicalReportSteps {
         response = given()
                 .baseUri("http://localhost:8080")
                 .contentType("application/json")
-                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJNYXJpbyIsImlhdCI6MTc0OTM1MjU2OCwiZXhwIjoxNzQ5OTU3MzY4fQ.qNjHzWSa5CTRwXDszRc6J7hWQhWMdk2bRBsBBH070gUxrD61oEUl9_gxD3mSJ3s5")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJVcnNhIiwiaWF0IjoxNzQ5MzU3MzQzLCJleHAiOjE3NDk5NjIxNDN9.ERQ2fwtfaydHf_xVNwqjWu7aIaimygo30ZGjJPibriq4khgQSjVty2LBLt3_xZUz")
                 .body("{"
                         + "\"reason\": \"" + data.get("reason") + "\","
                         + "\"date\": \"" + data.get("date") + "\","

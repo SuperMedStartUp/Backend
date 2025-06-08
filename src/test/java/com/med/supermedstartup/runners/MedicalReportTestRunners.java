@@ -19,7 +19,7 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "com..med.supermedstartup.steps",
+        glue = "com.med.supermedstartup.steps",
         plugin = {"pretty", "json:target/cucumber-report.json"}
 )
 @SpringBootTest(classes = TestConfiguration.class)
