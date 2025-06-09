@@ -15,7 +15,6 @@ import io.cucumber.java.an.Y;
 import io.cucumber.java.ast.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import io.cucumber.java.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -155,8 +154,8 @@ public class UserManagementSteps {
         Role doctorRole = roleRepository.findByName(Roles.DOCTOR).get();
         Role patientRole = roleRepository.findByName(Roles.PATIENT).get();
 
-        User doctor = new User("doctor1", "pass123", doctorRole);
-        User patient = new User("patient1", "pass456", patientRole);
+        User doctor = new User("doctor4", "pass123", doctorRole);
+        User patient = new User("patient2", "pass456", patientRole);
 
         userRepository.save(doctor);
         userRepository.save(patient);

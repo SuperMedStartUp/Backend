@@ -2,9 +2,9 @@ package com.med.supermedstartup.steps;
 
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 
 import static io.restassured.RestAssured.baseURI;
@@ -14,6 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 import java.util.HashMap;
 import java.util.Map;
 
+@Transactional
 public class MedicalReportSteps {
 
     @Autowired
@@ -38,7 +39,7 @@ public class MedicalReportSteps {
         response = given()
                 .baseUri("http://localhost:8080")
                 .contentType("application/json")
-                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJVcnNhIiwiaWF0IjoxNzQ5MzU3MzQzLCJleHAiOjE3NDk5NjIxNDN9.ERQ2fwtfaydHf_xVNwqjWu7aIaimygo30ZGjJPibriq4khgQSjVty2LBLt3_xZUz")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJNYXJpYSIsImlhdCI6MTc0OTQ4NTY3MywiZXhwIjoxNzUwMDkwNDczfQ.CBTKfmeqO1vVp7fWghtfvBBoZQxMNJWjxA3MNYAhLOkX1neXTSDJx3gqLbbGtgXH")
                 .body("{"
                         + "\"reason\": \"" + data.get("reason") + "\","
                         + "\"date\": \"" + data.get("date") + "\","
