@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 import java.util.HashMap;
 import java.util.Map;
 
-@Transactional
+//BEARER
 public class MedicalReportSteps {
 
     @Autowired

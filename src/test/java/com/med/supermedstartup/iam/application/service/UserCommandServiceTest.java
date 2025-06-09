@@ -46,7 +46,7 @@ class UserCommandServiceTest {
 
     @Test
     void iniciarSesionExitosamente() {
-        SignInCommand command = new SignInCommand("Rolando", "rolando");
+        SignInCommand command = new SignInCommand("Rolando", "rolando123");
         User user = new User();
         user.setUsername(command.username());
         user.setPassword(command.password());
